@@ -20,7 +20,12 @@ public class PersonaService {
             throw new Exception("El empleado no puede tener numeros menores o iguales a 0");
         }
 
+        //TODO Conectar a base de datos.
+        //TODO Terminar las validaciones.
 
         return persona;
     }
 }
+
+
+

@@ -26,7 +26,7 @@ public class PersonaController {
             personaService.guardar(persona);
             return ResponseEntity.ok(persona);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.notFound().build();
         }
 
     }
