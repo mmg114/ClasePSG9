@@ -49,26 +49,10 @@ public class utilitis {
         return resultado;
     }
 
-    public static void main(String[] args) {
-        List<Integer> edades = new ArrayList<>();
-        edades.add(32);
-        edades.add(45);
-        edades.add(65);
-        edades.add(18);
-        edades.add(22);
-        edades.add(44);
-        System.out.println(contarEdadTrabajadores(edades));
 
-    }
 
     public static double contarEdadTrabajadores(List<Integer> edadesDetrabajadores) {
         double resultado = 0;
-/*
-        for (int edad : edadesDetrabajadores) {
-            resultado = resultado + edad;
-        }
-        resultado = resultado / edadesDetrabajadores.size();
-*/
 
         for (int i = 0; i < edadesDetrabajadores.size(); i++) {
             resultado = resultado + edadesDetrabajadores.get(i);
