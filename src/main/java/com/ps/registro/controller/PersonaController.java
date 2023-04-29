@@ -1,10 +1,8 @@
 package com.ps.registro.controller;
 
 import com.ps.registro.modelo.Persona;
-import com.ps.registro.modelo.dto.PersonaDTO;
 import com.ps.registro.modelo.dto.ResponseErrorDTO;
 import com.ps.registro.services.IPersonaService;
-import com.ps.registro.services.PersonaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +23,7 @@ public class PersonaController {
     @GetMapping("/{id}")
     public ResponseEntity<?> consultar(@PathVariable("id") Long id) {
         try {
-            PersonaDTO resultado=  iPersonaService.consultar(id);
+            Persona resultado=  iPersonaService.consultar(id);
 
             return ResponseEntity
                     .status(HttpStatus.CREATED)
@@ -53,8 +51,17 @@ public class PersonaController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<Persona> actualizar(@RequestBody Persona persona) {
-        return ResponseEntity.ok(persona);
+    public ResponseEntity<?> actualizar(@RequestBody Persona persona) {
+        try {
+            Persona resultado=  iPersonaService.actualizar(persona);
+
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(resultado);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseErrorDTO(HttpStatus.BAD_REQUEST.toString(), e.getCause() + "", e.getMessage()));
+        }
     }
 
     @DeleteMapping("/{id}")
