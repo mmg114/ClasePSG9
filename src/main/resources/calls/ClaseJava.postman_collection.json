@@ -32,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1000,\r\n    \"identificacion\": null,\r\n    \"nombres\": null,\r\n    \"apellidos\": null,\r\n    \"fechaNacimiento\": null,\r\n    \"telefono\": null,\r\n    \"correo\": null\r\n}",
+					"raw": "{   \"id\": 1000,\r\n  \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -40,13 +40,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/persona",
+					"raw": "localhost:8080/persona/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"persona"
+						"persona",
+						""
 					]
 				}
 			},

@@ -1,6 +1,7 @@
 package com.ps.registro.controller;
 
 import com.ps.registro.modelo.Persona;
+import com.ps.registro.modelo.dto.PersonaDTO;
 import com.ps.registro.modelo.dto.ResponseErrorDTO;
 import com.ps.registro.services.IPersonaService;
 import com.ps.registro.services.PersonaService;
@@ -22,17 +23,25 @@ public class PersonaController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<Persona> consultar(@PathVariable("id") Long id) {
-        Persona persona = new Persona();
-        persona.setId(id);
-        return ResponseEntity.ok(persona);
+    public ResponseEntity<?> consultar(@PathVariable("id") Long id) {
+        try {
+            PersonaDTO resultado=  iPersonaService.consultar(id);
+
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(resultado);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseErrorDTO(HttpStatus.BAD_REQUEST.toString(), e.getCause() + "", e.getMessage()));
+        }
+
     }
 
     @PostMapping("/")
     public ResponseEntity<?> guardar(@RequestBody Persona persona) {
         try {
            Persona resultado=  iPersonaService.guardar(persona);
-            logger.info(resultado+"");
+
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body(resultado);

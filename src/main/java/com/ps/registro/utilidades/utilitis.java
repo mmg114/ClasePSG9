@@ -62,4 +62,17 @@ public class utilitis {
     }
 
 
+
+        public static void main(String[] args) {
+            //--> Bucle while
+            int i = 15; //iterador
+
+            while (i < 10) {
+                System.out.println("El valor es: " + i);
+                i++; //incremento
+            }
+
+    }
+
+
 }

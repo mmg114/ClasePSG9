@@ -1,6 +1,7 @@
 package com.ps.registro.services;
 
 import com.ps.registro.modelo.Persona;
+import com.ps.registro.modelo.dto.PersonaDTO;
 import com.ps.registro.repository.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,12 +27,23 @@ public class PersonaService implements  IPersonaService {
         }
 
 
-        //TODO Conectar a base de datos.
         //TODO Terminar las validaciones.
 
-        System.out.println(personaRepository.findAll());
-
         return  personaRepository.save(persona);
+    }
+
+    @Override
+    public PersonaDTO consultar(Long id) throws Exception {
+
+        if (id==null || id<1){
+            throw new Exception("El id enviado no es valido");
+        }
+
+        Persona p = personaRepository.getOne(id);
+        PersonaDTO personaDTO = new PersonaDTO();
+        personaDTO.setNombre(p.getNombres());
+
+        return personaDTO;
     }
 }
 
