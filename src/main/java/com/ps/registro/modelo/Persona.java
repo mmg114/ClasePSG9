@@ -31,6 +31,6 @@ public class Persona {
     @Column(name="telefono", length=20)
     private String telefono;
 
-    @Column(name="correo", length=100)
+    @Column(name="correo", length=1)
     private String correo;
 }
